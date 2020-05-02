@@ -9,7 +9,7 @@ First install `Boilerplato` from [here](https://github.com/boilerplato/boilerpla
 Then run,
 
 ```sh
-$ boilerplato my-app --template hyper-routerify-server-template
+$ boilerplato my-app --template routerify/hyper-routerify-server-template
 ```
 
 ## Contributing
