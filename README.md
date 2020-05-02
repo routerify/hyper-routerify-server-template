@@ -1,6 +1,6 @@
 # hyper-routerify-server-template
 
-A [Boilerplato](https://github.com/boilerplato/boilerplato) template for [hyper](https://hyper.rs/) and [routerify](https://github.com/routerify/routerify/actions) server app.
+A [Boilerplato](https://github.com/boilerplato/boilerplato) template for [hyper](https://hyper.rs/) and [routerify](https://github.com/routerify/routerify) server app.
 
 ## Usage
 
