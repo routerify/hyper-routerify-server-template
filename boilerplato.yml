@@ -1,0 +1,69 @@
+version: 1.0.0
+template:
+  engine: handlebars
+  path: "."
+  extension: ".boiler"
+data:
+  - name: packageName
+    type: string
+    message: "Enter package name:"
+    required: false
+    defaultValue: $APP_NAME
+  - name: appDescription
+    type: string
+    message: "Enter app description:"
+    required: false
+    defaultValue: ${APP_NAME}
+  - name: appVersion
+    type: semver
+    message: "Enter initial version:"
+    required: false
+    defaultValue: "0.1.0"
+  - name: author
+    type: string
+    message: "Enter author e.g. Alice <a@example.com>:"
+    required: true
+  - name: license
+    type: string
+    message: "Enter app license:"
+    required: false
+    defaultValue: MIT
+  - name: homepage
+    type: string
+    message: "Enter app homepage:"
+    required: false
+    defaultValue: ""
+  - name: repoUrl
+    type: string
+    message: "Enter repo URL:"
+    required: false
+    defaultValue: ""
+  - name: keywords
+    type: array[string]
+    message: "Enter keywords:"
+    required: false
+    defaultValue: []
+  - name: categories
+    type: array[string]
+    message: "Enter crate categories listed on https://crates.io/category_slugs:"
+    required: false
+    defaultValue: ["asynchronous", "web-programming", "web-programming::http-server"]
+postGenerate:
+  linux: if [ "${license}" = "MIT" ]; then cp "${TEMPLATE_SOURCE_PATH}/LICENSE" "${APP_FULL_PATH}/LICENSE"; fi
+  macos: if [ "${license}" = "MIT" ]; then cp "${TEMPLATE_SOURCE_PATH}/LICENSE" "${APP_FULL_PATH}/LICENSE"; fi
+helpText:
+  linux:
+    - '{{#if (eq license "MIT")}}{{color "Warning:" "yellow"}} Please update copyright name in the {{color "LICENSE" "green" }} file with appropriate value.{{/if}}'
+  macos:
+    - '{{#if (eq license "MIT")}}{{color "Warning:" "yellow"}} Please update copyright name in the {{color "LICENSE" "green" }} file with appropriate value.{{/if}}'
+  all:
+    - '{{color "Warning:" "yellow"}} It uses {{color "tusk" "green" }} to automate scripts. Please install it from here {{color "https://github.com/rliebz/tusk" "green"}} and then run {{color "$ tusk setup" "cyan" }}.'
+    - ""
+    - "Inside that directory, you can run several commands:\n"
+    - '  {{color "tusk dev" "cyan"}}'
+    - "    Starts the development server.\n"
+    - '  {{color "tusk start" "cyan"}}'
+    - "    Starts the production server.\n"
+    - "We suggest that you begin by typing:\n"
+    - '  {{color "cd" "cyan"}} $APP_REL_PATH'
+    - '  {{color "tusk dev" "cyan"}}'

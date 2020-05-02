@@ -1,0 +1,15 @@
+tasks:
+  setup:
+    run:
+      - command: cargo install cargo-watch
+      - command: cargo install releez
+  dev:
+    run:
+      - command: cargo watch --watch ./src -x run
+  start:
+    run:
+      - command: cargo build --release
+      - command: ./target/release/hyper-routerify-server-template
+  deploy:
+    run:
+      - command: releez 0.0.0
