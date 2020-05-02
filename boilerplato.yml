@@ -64,6 +64,8 @@ helpText:
     - "    Starts the development server.\n"
     - '  {{color "tusk start" "cyan"}}'
     - "    Starts the production server.\n"
+    - '  {{color "tusk deploy" "cyan"}}'
+    - "    Deploy the server.\n"
     - "We suggest that you begin by typing:\n"
     - '  {{color "cd" "cyan"}} $APP_REL_PATH'
     - '  {{color "tusk dev" "cyan"}}'
