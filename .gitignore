@@ -47,6 +47,7 @@ Cargo.lock
 hyper-routerify-server-template.iml
 /.idea
 /my_app
+/my-app
 .halt.releez.yml
 
 # End of https://www.gitignore.io/api/rust,macos
