@@ -14,9 +14,9 @@ edition = "2018"
 
 [dependencies]
 hyper = "0.13"
-routerify = "1.0"
-routerify-cors = "1.0"
-routerify-json-response = "1.0"
+routerify = "1.1"
+routerify-cors = "1.1"
+routerify-json-response = "1.1"
 tokio = { version = "0.2", features = ["full"] }
 dotenv = "0.15.0"
 colored = "1.9"

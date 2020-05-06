@@ -28,7 +28,7 @@ async fn main() {
         .http2_only(false)
         .http1_writev(true)
         .tcp_sleep_on_accept_errors(true)
-        .serve(RouterService::new(routes::router()));
+        .serve(RouterService::new(routes::router()).unwrap());
 
     hyper_routerify_server_template::info!("App is serving on: {}", server.local_addr());
     if let Err(e) = server.await {
