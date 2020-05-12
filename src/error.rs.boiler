@@ -12,13 +12,13 @@ impl Error {
 
 impl Display for Error {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "hyper_routerify_server_template::Error: {}", self.msg)
+        write!(f, "{{replace packageName "-" "_"}}::Error: {}", self.msg)
     }
 }
 
 impl Debug for Error {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "hyper_routerify_server_template::Error: {}", self.msg)
+        write!(f, "{{replace packageName "-" "_"}}::Error: {}", self.msg)
     }
 }
 
