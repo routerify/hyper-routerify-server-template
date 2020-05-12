@@ -1,12 +1,9 @@
 extern crate hyper_routerify_server_template;
 use colored::*;
 use hyper::Server;
-use hyper_routerify_server_template::constants;
-use hyper_routerify_server_template::routes;
-use hyper_routerify_server_template::utils;
+use hyper_routerify_server_template::{constants, routes, utils};
 use routerify::RouterService;
-use std::net::IpAddr;
-use std::net::SocketAddr;
+use std::net::{IpAddr, SocketAddr};
 
 #[tokio::main]
 async fn main() {
