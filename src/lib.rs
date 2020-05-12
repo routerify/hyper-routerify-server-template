@@ -1,4 +1,5 @@
 pub use self::error::{Error, ErrorExt, ResultExt};
+#[cfg(test)]
 pub use self::test_env::setup_test_environment;
 
 #[macro_use]
@@ -12,6 +13,7 @@ pub mod ext;
 pub mod http_client;
 pub mod prelude;
 pub mod routes;
+#[cfg(test)]
 mod test_env;
 pub mod utils;
 
