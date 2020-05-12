@@ -1,3 +1,3 @@
-pub use client_response::ReqwestResponseExt;
+pub use client_resp::ReqwestResponseExt;
 
-mod client_response;
+mod client_resp;

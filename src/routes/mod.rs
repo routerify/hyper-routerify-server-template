@@ -1,9 +1,8 @@
 use crate::constants;
-use crate::{utils, ResultExt};
-use hyper::{Body, Request, Response, StatusCode};
+use crate::utils;
+use hyper::{Body, Request, Response};
 use routerify::{Middleware, Router};
 use routerify_cors::enable_cors_all;
-use routerify_json_response::{json_failed_resp_with_message, json_success_resp};
 use serde_json::json;
 
 mod api;
@@ -30,16 +29,14 @@ async fn logger_middleware(req: Request<Body>) -> crate::Result<Request<Body>> {
 }
 
 async fn home_get(_: Request<Body>) -> crate::Result<Response<Body>> {
-    json_success_resp(&json!({
+    resp_200!(json!({
         "name": constants::APP_NAME,
         "version": constants::APP_VERSION,
         "description": constants::APP_DESCRIPTION,
     }))
-    .wrap()
 }
 
 async fn error_handler(err: routerify::Error) -> Response<Body> {
     error!("{}", err);
-    json_failed_resp_with_message(StatusCode::INTERNAL_SERVER_ERROR, err.to_string())
-        .expect("Couldn't create a response while handling the server error")
+    resp_500!("{}", err).expect("Couldn't create a response while handling the server error")
 }
