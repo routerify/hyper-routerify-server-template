@@ -15,6 +15,7 @@ pub mod prelude;
 pub mod routes;
 #[cfg(test)]
 mod test_env;
+pub mod types;
 pub mod utils;
 
 pub type Result<T> = std::result::Result<T, Error>;

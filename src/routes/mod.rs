@@ -29,11 +29,11 @@ async fn logger_middleware(req: Request<Body>) -> crate::Result<Request<Body>> {
 }
 
 async fn home_get(_: Request<Body>) -> crate::Result<Response<Body>> {
-    resp_200!(json!({
-        "name": constants::APP_NAME,
-        "version": constants::APP_VERSION,
-        "description": constants::APP_DESCRIPTION,
-    }))
+    resp_200!(AppInfo {
+        name: constants::APP_NAME,
+        version: constants::APP_VERSION,
+        description: constants::APP_DESCRIPTION,
+    })
 }
 
 async fn error_handler(err: routerify::Error) -> Response<Body> {
