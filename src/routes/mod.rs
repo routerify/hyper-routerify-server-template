@@ -1,9 +1,9 @@
 use crate::constants;
+use crate::types::AppInfo;
 use crate::utils;
 use hyper::{Body, Request, Response};
 use routerify::{Middleware, Router};
 use routerify_cors::enable_cors_all;
-use serde_json::json;
 
 mod api;
 
