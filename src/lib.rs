@@ -13,6 +13,7 @@ pub mod ext;
 pub mod http_client;
 pub mod prelude;
 pub mod routes;
+pub mod startup;
 #[cfg(test)]
 mod test_env;
 pub mod types;

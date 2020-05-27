@@ -1,13 +1,12 @@
 extern crate hyper_routerify_server_template;
-use colored::*;
 use hyper::Server;
-use hyper_routerify_server_template::{constants, routes, utils};
+use hyper_routerify_server_template::{constants, routes, startup, utils, ResultExt};
 use routerify::RouterService;
 use std::net::{IpAddr, SocketAddr};
 
 #[tokio::main]
 async fn main() {
-    startup();
+    startup::up().await.context("Failed to startup the server").unwrap();
 
     let addr = SocketAddr::new(
         utils::env(constants::env::HOST)
@@ -31,28 +30,4 @@ async fn main() {
     if let Err(e) = server.await {
         hyper_routerify_server_template::error!("Server Error: {}", e);
     }
-}
-
-fn startup() {
-    dotenv::dotenv().ok();
-    hyper_routerify_server_template::logger::init_logger();
-    log_app_env();
-}
-
-fn log_app_env() {
-    println!("Environment Variables:");
-    get_required_env_names()
-        .map(|var| (var, utils::env(var).unwrap_or("<NOT_FOUND>".to_owned())))
-        .for_each(|(var, val)| {
-            println!("  {}: {}", var.color(Color::BrightBlack), val.color(Color::Green));
-        });
-    println!();
-}
-
-fn get_required_env_names() -> impl Iterator<Item = &'static str> {
-    include_str!("../.env.example")
-        .lines()
-        .filter(|line| !line.starts_with("#") && !line.is_empty())
-        .map(|line| line.split("=").take(1))
-        .flatten()
 }
